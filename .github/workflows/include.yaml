@@ -1,6 +1,6 @@
 name: Security-pipeline include
 on:
-  workflow_dispatch:
+  workflow_call:
 jobs:
   code-scan:
     runs-on: self-hosted
