@@ -1,9 +1,8 @@
 name: Security-pipeline include
 on:
   workflow_call:
-    inputs:
-      sec_rules_token:
-        description: 'SEC Rules Token'
+    secrets:
+      SEC_RULES_TOKEN:
         required: true
 jobs:
   code-scan:
