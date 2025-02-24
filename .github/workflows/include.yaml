@@ -16,6 +16,7 @@ jobs:
           -e CI_JOB_ID="${{ github.run_id }}-${{ github.run_number }}" \
           -e CI_COMMIT_SHA="${{ github.sha }}" \
           -e CI_PROJECT_ID="${{ github.repository_id }}" \
+          -e CI_GROUP_ID="0" \
           -e CI_PROJECT_NAME="${{ github.event.repository.name }}" \
           -e CI_PROJECT_NAMESPACE="${{ github.repository_owner }}" \
           -e CI_PROJECT_PATH="${{ github.repository }}" \
