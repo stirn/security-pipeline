@@ -12,8 +12,6 @@ jobs:
       env:
           SEC_RULES_TOKEN: ${{ secrets.SEC_RULES_TOKEN }}
       run: |
-          echo CI_COMMIT_REF_NAME="${{ github.ref_name }}"
-          exit 0
           docker run --rm -v ${{ github.workspace }}:/project \
           -e CI_JOB_ID="${{ github.run_id }}-${{ github.run_number }}" \
           -e CI_COMMIT_SHA="${{ github.sha }}" \
