@@ -27,4 +27,4 @@ jobs:
           -e CI_PROJECT_URL="${{ github.server_url }}/${{ github.repository }}" \
           -e CI_PIPELINE_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
           -e DANGER_GITLAB_API_TOKEN='TOKENN' \
-          hub.softswiss.net/security-pub/pipeguard:feature-nl-appsec-541-github
+          security-pipelines:0.1
