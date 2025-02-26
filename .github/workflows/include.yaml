@@ -27,5 +27,5 @@ jobs:
           -e CI_COMMIT_REF_NAME="${{ github.ref_name }}" \
           -e CI_PROJECT_URL="${{ github.server_url }}/${{ github.repository }}" \
           -e CI_PIPELINE_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
-          -e DANGER_GITLAB_API_TOKEN='TOKENN' \
+          -e DANGER_GITLAB_API_TOKEN="${{ secrets.DANGER_GITHUB_API_TOKEN }}" \
           security-pipelines:0.1
