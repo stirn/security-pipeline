@@ -13,6 +13,7 @@ jobs:
           SEC_RULES_TOKEN: ${{ secrets.SEC_RULES_TOKEN }}
       run: |
           docker run --rm -v ${{ github.workspace }}:/project \
+          -e GITHUB_ACTIONS="true" \
           -e CI_JOB_ID="${{ github.run_id }}-${{ github.run_number }}" \
           -e CI_COMMIT_SHA="${{ github.sha }}" \
           -e CI_PROJECT_ID="${{ github.repository_id }}" \
