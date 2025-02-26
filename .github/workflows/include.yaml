@@ -3,7 +3,7 @@ on:
   workflow_call:
 
 jobs:
-  code-scan:
+  project-scan:
     runs-on: self-hosted
     steps:
     - name: Checkout repository
