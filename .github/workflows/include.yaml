@@ -11,6 +11,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+    - name: Verify Danger Token
+      run: |
+          curl -H "Authorization: token $DANGER_GITHUB_API_TOKEN" \
+           -H "Accept: application/vnd.github.v3+json" \
+           https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments
     - name: code-scan
       env:
           SEC_RULES_TOKEN: ${{ secrets.SEC_RULES_TOKEN }}
