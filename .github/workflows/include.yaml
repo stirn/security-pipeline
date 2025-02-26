@@ -9,15 +9,12 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Set CI_COMMIT_REF_NAME for pull_request
-      if: github.event_name == 'pull_request'
-      run: echo "CI_COMMIT_REF_NAME=${{ github.head_ref }}" >> $GITHUB_ENV
-    - name: Set CI_COMMIT_REF_NAME for push
-      if: github.event_name == 'push'
-      run: echo "CI_COMMIT_REF_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
+    # - name: Set CI_COMMIT_REF_NAME
+    #   run: echo "CI_COMMIT_REF_NAME=${{ github.head_ref || github.ref_name }}" >> $GITHUB_ENV
     - name: code-scan
       env:
           SEC_RULES_TOKEN: ${{ secrets.SEC_RULES_TOKEN }}
+          CI_COMMIT_REF_NAME: ${{ github.head_ref || github.ref_name }}
       run: |
           docker run --rm -v ${{ github.workspace }}:/project \
           -e GITHUB_ACTIONS="true" \
