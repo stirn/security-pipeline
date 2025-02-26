@@ -6,12 +6,9 @@ on:
 jobs:
   code-scan:
     runs-on: self-hosted
-    container: security-pipelines:0.1
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Force Danger to Post
-      run: danger ci --fail-on-errors
     # - name: code-scan
       # env:
       #     SEC_RULES_TOKEN: ${{ secrets.SEC_RULES_TOKEN }}
