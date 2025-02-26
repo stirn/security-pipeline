@@ -16,6 +16,7 @@ jobs:
           SEC_RULES_TOKEN: ${{ secrets.SEC_RULES_TOKEN }}
           CI_COMMIT_REF_NAME: ${{ github.head_ref || github.ref_name }}
       run: |
+          export CI_COMMIT_REF_NAME="${CI_COMMIT_REF_NAME}"
           docker run --rm -v ${{ github.workspace }}:/project \
           -e GITHUB_ACTIONS="true" \
           -e CI_COMMIT_AUTHOR="${{ github.actor }}" \
