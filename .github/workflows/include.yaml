@@ -35,7 +35,7 @@ jobs:
           -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME=${{ github.base_ref }} \
           -e CI_MERGE_REQUEST_DIFF_BASE_SHA=${{ github.event.pull_request.base.sha }} \
           -e CI_MERGE_REQUEST_IID=${{ github.event.pull_request.number }} \
-          -e CI_MERGE_REQUEST_PROJECT_URL=${{ github.server_url }}${{ github.repository }}/pull/${{ github.event.pull_request.number }} \
+          -e CI_MERGE_REQUEST_PROJECT_URL=${{ github.server_url }}/${{ github.repository }}/pull/${{ github.event.pull_request.number }} \
           -e CI_MERGE_REQUEST_SOURCE_PROJECT_URL=${{ github.event.pull_request.head.repo.html_url }} \
           -e CI_MERGE_REQUEST_SOURCE_BRANCH_SHA=${{ github.event.pull_request.head.sha }} \
           security-pipelines:0.1
