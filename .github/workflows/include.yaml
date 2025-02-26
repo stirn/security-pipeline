@@ -11,10 +11,10 @@ jobs:
       uses: actions/checkout@v4
     - name: Set CI_COMMIT_REF_NAME for pull_request
       if: github.event_name == 'pull_request'
-      run: echo "::set-env name=CI_COMMIT_REF_NAME::${{ github.head_ref }}"
+      run: echo "CI_COMMIT_REF_NAME=${{ github.head_ref }}" >> $GITHUB_ENV
     - name: Set CI_COMMIT_REF_NAME for push
       if: github.event_name == 'push'
-      run: echo "::set-env name=CI_COMMIT_REF_NAME::${{ github.ref_name }}"
+      run: echo "CI_COMMIT_REF_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
     - name: code-scan
       env:
           SEC_RULES_TOKEN: ${{ secrets.SEC_RULES_TOKEN }}
