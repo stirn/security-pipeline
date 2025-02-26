@@ -6,6 +6,8 @@ on:
 jobs:
   code-scan:
     runs-on: self-hosted
+    permissions:
+      pull-requests: write
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
