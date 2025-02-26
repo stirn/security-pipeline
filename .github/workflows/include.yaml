@@ -35,7 +35,7 @@ jobs:
           -e CI_COMMIT_REF_NAME="${CI_COMMIT_REF_NAME}" \
           -e CI_PROJECT_URL="${{ github.server_url }}/${{ github.repository }}" \
           -e CI_PIPELINE_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
-          -e DANGER_GITHUB_API_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+          -e DANGER_GITLAB_API_TOKEN=${{ secrets.GITHUB_TOKEN }} \
           -e CI_MERGE_REQUEST_SOURCE_BRANCH_NAME=${{ github.head_ref }} \
           -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME=${{ github.base_ref }} \
           -e CI_MERGE_REQUEST_DIFF_BASE_SHA=${{ github.event.pull_request.base.sha }} \
