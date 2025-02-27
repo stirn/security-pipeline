@@ -12,13 +12,13 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Debug GitHub PR Context
-      run: |
-        curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          -H "Accept: application/vnd.github.v3+json" \
-          -d '{"body": "Test comment from Danger!"}' \
-          "https://api.github.com/repos/stirn/railsgoat_act/issues/1/comments"
-      shell: bash
+    # - name: Debug GitHub PR Context
+    #   run: |
+    #     curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+    #       -H "Accept: application/vnd.github.v3+json" \
+    #       -d '{"body": "Test comment from Danger!"}' \
+    #       "https://api.github.com/repos/stirn/railsgoat_act/issues/1/comments"
+    #   shell: bash
     - name: code-scan
       env:
           SEC_RULES_TOKEN: ${{ secrets.SEC_RULES_TOKEN }}
