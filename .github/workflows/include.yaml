@@ -54,3 +54,4 @@ jobs:
           -e CI_MERGE_REQUEST_SOURCE_PROJECT_URL=${{ github.event.pull_request.head.repo.html_url }} \
           -e CI_MERGE_REQUEST_SOURCE_BRANCH_SHA=${{ github.event.pull_request.head.sha }} \
           security-pipelines:0.1
+      shell: bash
