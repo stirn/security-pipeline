@@ -43,10 +43,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Checkout env
-      run: |
-          env
     - name: code-scan
       run: |
+        env
         bash /sec_temp/pipeline/scripts/00_start.sh
         echo "--- Code scan finished"
