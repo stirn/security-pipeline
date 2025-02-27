@@ -10,7 +10,7 @@ jobs:
       issues: write
     container:
       image: hub.softswiss.net/security-pub/pipeguard:feature-nl-appsec-541-github
-      options: --user root
+      options: --user root, --quiet
     env:
       GITHUB_ACTIONS: "true"
       CI_COMMIT_AUTHOR: "${{ github.actor }}"
