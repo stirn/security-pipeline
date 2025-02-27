@@ -39,9 +39,6 @@ jobs:
       CI_MERGE_REQUEST_SOURCE_PROJECT_URL: "${{ github.event.pull_request.head.repo.html_url }}"
       CI_MERGE_REQUEST_SOURCE_BRANCH_SHA: "${{ github.event.pull_request.head.sha }}"
     steps:
-    - name: Check container
-      run : |
-        docker inspect cd004eacc80c --format='{{.State.Status}} {{.State.ExitCode}}'
     - name: Checkout repository
       uses: actions/checkout@v4
     - name: code-scan
