@@ -5,10 +5,10 @@ on:
 jobs:
   code-scan:
     runs-on: self-hosted
-    # permissions:
-    #   pull-requests: write
-    #   issues: write
-    #   contents: read
+    permissions:
+      pull-requests: write
+      issues: write
+      contents: read
     container:
       image: hub.softswiss.net/security-pub/pipeguard:feature-nl-appsec-541-github
       options: --user root
