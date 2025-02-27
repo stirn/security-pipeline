@@ -1,0 +1,47 @@
+name: Manual workflow inside the container
+on:
+  workflow_dispatch:
+  pull_request:
+jobs:
+  code-scan:
+    runs-on: self-hosted
+    permissions:
+      pull-requests: write
+      issues: write
+    container:
+      image: security-pipelines:0.1
+      options: --user root
+    env:
+      GITHUB_ACTIONS: "true"
+      CI_COMMIT_AUTHOR: "${{ github.actor }}"
+      CI_JOB_ID: "${{ github.run_id }}-${{ github.run_number }}"
+      CI_COMMIT_SHA: "${{ github.sha }}"
+      CI_PROJECT_ID: "${{ github.repository_id }}"
+      CI_GROUP_ID: "0"
+      CI_PROJECT_NAME: "${{ github.event.repository.name }}"
+      CI_PROJECT_NAMESPACE: "${{ github.repository_owner }}"
+      CI_PROJECT_PATH: "${{ github.repository }}"
+      CI_PIPELINE_ID: "${{ github.run_id }}"
+      CI_PROJECT_DIR: "/project"
+      CI_JOB_TOKEN: "${{ secrets.SEC_RULES_TOKEN }}"
+      CI_SERVER_HOST: "${{ github.server_url }}"
+      CI_COMMIT_REF_NAME: "${{ github.head_ref || github.ref_name }}"
+      CI_PROJECT_URL: "${{ github.server_url }}/${{ github.repository }}"
+      CI_PIPELINE_URL: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      DANGER_GITLAB_API_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      DANGER_GITHUB_API_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      DANGER_USE_GITHUB: "true"
+      CI_MERGE_REQUEST_SOURCE_BRANCH_NAME: "${{ github.head_ref }}"
+      CI_MERGE_REQUEST_TARGET_BRANCH_NAME: "${{ github.base_ref }}"
+      CI_MERGE_REQUEST_DIFF_BASE_SHA: "${{ github.event.pull_request.base.sha }}"
+      CI_MERGE_REQUEST_IID: "${{ github.event.pull_request.number }}"
+      CI_MERGE_REQUEST_PROJECT_URL: "${{ github.server_url }}/${{ github.repository }}/pull/${{ github.event.pull_request.number }}"
+      CI_MERGE_REQUEST_SOURCE_PROJECT_URL: "${{ github.event.pull_request.head.repo.html_url }}"
+      CI_MERGE_REQUEST_SOURCE_BRANCH_SHA: "${{ github.event.pull_request.head.sha }}"
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: code-scan
+      run: |
+        bash /sec_temp/pipeline/scripts/00_start.sh
+        echo "--- Code scan finished"
