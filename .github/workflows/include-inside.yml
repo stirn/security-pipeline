@@ -8,6 +8,7 @@ jobs:
     permissions:
       pull-requests: write
       issues: write
+      contents: read
     container:
       image: hub.softswiss.net/security-pub/pipeguard:feature-nl-appsec-541-github
       options: --user root
