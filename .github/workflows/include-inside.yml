@@ -1,6 +1,6 @@
 name: Manual workflow inside the container
 on:
-  workflow_dispatch:
+  workflow_call:
   pull_request:
 jobs:
   code-scan:
