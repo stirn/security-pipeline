@@ -9,7 +9,7 @@ jobs:
       pull-requests: write
       issues: write
     container:
-      image: security-pipelines:0.1
+      image: hub.softswiss.net/security-pub/pipeguard:feature-nl-appsec-541-github
       options: --user root
     env:
       GITHUB_ACTIONS: "true"
